@@ -11,8 +11,8 @@ describe("Registro de usuário", () => {
   it("Realizar o cadastro", () => {
     cy.contains("Signup / Login").click();
     cy.contains("New User Signup!");
-    cy.get('[data-qa="signup-name"]').type("Kleber");
-    cy.get('[data-qa="signup-email"]').type("kleber@gmail.com");
+    cy.get('[data-qa="signup-name"]').type("Matheus");
+    cy.get('[data-qa="signup-email"]').type("matheuseduardo@gmail.com");
     cy.get('button[data-qa="signup-button"]').click();
 
     // Verifica se a mensagem de e-mail já existe é exibida
@@ -21,28 +21,28 @@ describe("Registro de usuário", () => {
         // Se a mensagem de e-mail já existe for encontrada, pular para o login
         cy.log("Email already exists, proceeding to login test.");
         cy.contains("Signup / Login").click();
-        cy.get('input[data-qa="login-email"]').type("kleber@gmail.com");
-        cy.get('input[data-qa="login-password"]').type("Unipe2024");
+        cy.get('input[data-qa="login-email"]').type("matheuseduardo@gmail.com");
+        cy.get('input[data-qa="login-password"]').type("matheus189");
         cy.get('button[data-qa="login-button"]').click();
         cy.get('a[href="/logout"]').contains("Logout").click();
       } else {
         // Se a mensagem de e-mail não existir, continuar com o registro
         cy.get('input[type="radio"][value="Mr"]').should("be.visible").check();
-        cy.get('input[data-qa="password"]').type("Unipe2024");
-        cy.get('input[data-qa="first_name"]').type("Kleber");
-        cy.get('input[data-qa="last_name"]').type("Barros");
+        cy.get('input[data-qa="password"]').type("matheus189");
+        cy.get('input[data-qa="first_name"]').type("Matheus");
+        cy.get('input[data-qa="last_name"]').type("Azevedo");
         cy.get('input[data-qa="company"]').type("Unipê");
-        cy.get('input[data-qa="address"]').type("Rua Tal");
-        cy.get('input[data-qa="address2"]').type("Endereco tal");
-        cy.get('select[data-qa="country"]').select("India");
+        cy.get('input[data-qa="address"]').type("Manoel Franca");
+        cy.get('input[data-qa="address2"]').type("Bairro dos Estados");
+        cy.get('select[data-qa="country"]').select("Israel");
         cy.get('input[data-qa="state"]').type("Paraíba");
         cy.get('input[data-qa="city"]').type("João Pessoa");
-        cy.get('input[data-qa="zipcode"]').type("58081320");
+        cy.get('input[data-qa="zipcode"]').type("58031160");
         cy.get('input[data-qa="mobile_number"]').type("83999999999");
         cy.contains("Create Account").click();
         cy.contains("Account Created!").should("exist");
         cy.get('a[data-qa="continue-button"]').click();
-        cy.contains("Logged in as Kleber").should("exist");
+        cy.contains("Logged in as Matheus").should("exist");
       }
     });
   });
@@ -50,8 +50,8 @@ describe("Registro de usuário", () => {
   // Realiza o login com sucesso
   it("deve realizar o login com sucesso", () => {
     cy.contains("Signup / Login").click();
-    cy.get('input[data-qa="login-email"]').type("kleber@gmail.com");
-    cy.get('input[data-qa="login-password"]').type("Unipe2024");
+    cy.get('input[data-qa="login-email"]').type("matheuseduardo@gmail.com");
+    cy.get('input[data-qa="login-password"]').type("matheus189");
     cy.get('button[data-qa="login-button"]').click();
     cy.get('a[href="/logout"]').contains("Logout").click();
   });
@@ -60,8 +60,8 @@ describe("Registro de usuário", () => {
   it("deve dar erro ao tentar login com senha errada", () => {
     cy.visit("http://automationexercise.com");
     cy.contains("Signup / Login").click();
-    cy.get('input[data-qa="login-email"]').type("kleber@gmail.com");
-    cy.get('input[data-qa="login-password"]').type("SenhaErrada");
+    cy.get('input[data-qa="login-email"]').type("matheuseduardo@gmail.com");
+    cy.get('input[data-qa="login-password"]').type("errado");
     cy.get('button[data-qa="login-button"]').click();
     cy.get('p[style="color: red;"]')
       .contains("Your email or password is incorrect!")
@@ -72,8 +72,8 @@ describe("Registro de usuário", () => {
   it("Fazer login e deletar a conta", () => {
     cy.visit("http://automationexercise.com");
     cy.contains("Signup / Login").click();
-    cy.get('input[data-qa="login-email"]').type("kleber@gmail.com");
-    cy.get('input[data-qa="login-password"]').type("Unipe2024");
+    cy.get('input[data-qa="login-email"]').type("matheuseduardo@gmail.com");
+    cy.get('input[data-qa="login-password"]').type("matheus189");
     cy.get('button[data-qa="login-button"]').click();
     cy.get('a[href="/delete_account"]').click();
     cy.get('a[data-qa="continue-button"]').click();
