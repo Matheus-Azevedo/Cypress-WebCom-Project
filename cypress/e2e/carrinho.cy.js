@@ -38,6 +38,6 @@ describe("Teste do Carrinho de Compras", () => {
     cy.wait(2000);
 
     // Verifica se o produto (com texto 'shirt') foi removido do carrinho
-    cy.contains("p", "shirt", { matchCase: false }).should("not.exist");
+    cy.contains("p", "tops", { matchCase: false }).should("not.exist");
   });
 });
