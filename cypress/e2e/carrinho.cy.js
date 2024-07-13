@@ -4,14 +4,17 @@ describe("Teste do Carrinho de Compras", () => {
     // Visita a página do produto 1 e adiciona ao carrinho
     cy.visit("https://automationexercise.com/product_details/1");
     cy.contains("button", "Add to cart").click();
+    cy.get(".modal-footer > .btn").click(); // Fecha o modal após adicionar ao carrinho
 
     // Visita a página do produto 2 e adiciona ao carrinho
     cy.visit("https://automationexercise.com/product_details/2");
     cy.contains("button", "Add to cart").click();
+    cy.get(".modal-footer > .btn").click(); // Fecha o modal após adicionar ao carrinho
 
     // Visita a página do produto 3 e adiciona ao carrinho
     cy.visit("https://automationexercise.com/product_details/3");
     cy.contains("button", "Add to cart").click();
+    cy.get(".modal-footer > .btn").click(); // Fecha o modal após adicionar ao carrinho
   });
 
   // Teste para verificar se os produtos foram adicionados ao carrinho
@@ -30,6 +33,9 @@ describe("Teste do Carrinho de Compras", () => {
 
     // Clica no link para remover o produto com data-product-id="1"
     cy.get('a[data-product-id="1"]').click();
+
+    // Aguarda o processamento da remoção
+    cy.wait(2000);
 
     // Verifica se o produto (com texto 'shirt') foi removido do carrinho
     cy.contains("p", "shirt", { matchCase: false }).should("not.exist");
